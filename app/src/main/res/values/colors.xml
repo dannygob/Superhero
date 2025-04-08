@@ -2,13 +2,4 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="text_background">#AA424545</color>
-    <color name="text_background_Upperbar">#AA21BCBC</color>
-    <color name="purple_200">#F40A16</color>
-    <color name="purple_500">#FFFFFF</color>
-    <color name="purple_700">#776D8C</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="splash_background">#9B0F0F</color>
-    <color name="menu_item_color">#EBE5E5</color>
 </resources>

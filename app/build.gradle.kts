@@ -9,8 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.superhero"
-        minSdk = 26
-
+        minSdk = 24
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -34,21 +33,9 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures{
-        viewBinding = true
-    }
 }
 
 dependencies {
-
-    // Retrofit & GsonConverterFactory
-
-    implementation(libs.retrofit)
-    implementation(libs.converter.gson)
-
-
-    // Picasso
-    implementation (libs.picasso)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -58,12 +45,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation (libs.glide)
-    annotationProcessor (libs.compiler)
-    implementation (libs.androidx.core.splashscreen)
-    implementation (libs.material.v1110)
-
-
-
-
 }
