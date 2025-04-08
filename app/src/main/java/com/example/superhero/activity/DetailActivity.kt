@@ -1,4 +1,4 @@
-package com.example.leagueofheroes.activities
+package com.example.superhero.activity
 
 import android.os.Bundle
 import android.widget.Toast
