@@ -15,6 +15,9 @@
         android:theme="@style/Theme.LeagueOfHeroes"
         tools:targetApi="31">
         <activity
+            android:name=".DetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.DetailActivity"
             android:exported="false" />
         <activity
