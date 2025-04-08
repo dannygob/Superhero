@@ -7,9 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.example.leagueofheroes.R
-import com.example.leagueofheroes.data.Superhero
 import com.example.superhero.R
+import com.example.superhero.data.Superhero
 import com.squareup.picasso.Picasso
 
 class SuperheroAdapter(var items: List<Superhero>, val onClick: (Int) -> Unit) : Adapter<SuperheroViewHolder>() {

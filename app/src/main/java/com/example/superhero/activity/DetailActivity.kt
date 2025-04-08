@@ -6,9 +6,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.leagueofheroes.R
-import com.example.leagueofheroes.data.Superhero
-import com.example.leagueofheroes.data.SuperheroService
+import com.example.superhero.R
+import com.example.superhero.data.Superhero
+import com.example.superhero.data.SuperheroService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

@@ -10,10 +10,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.leagueofheroes.R
-import com.example.leagueofheroes.adapters.SuperheroAdapter
-import com.example.leagueofheroes.data.Superhero
-import com.example.leagueofheroes.data.SuperheroService
+import com.example.superhero.R
+import com.example.superhero.adapters.SuperheroAdapter
+import com.example.superhero.data.Superhero
+import com.example.superhero.data.SuperheroService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var recyclerView: RecyclerView
     lateinit var adapter: SuperheroAdapter
+
 
     var superheroList: List<Superhero> = listOf()
 
