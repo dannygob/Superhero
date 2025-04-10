@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
             val superhero = superheroList[position]
 
             val intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra("SUPERHERO_ID", superhero.id)
+            intent.putExtra(DetailActivity.SUPERHERO_ID, superhero.id)
             startActivity(intent)
         }
 
