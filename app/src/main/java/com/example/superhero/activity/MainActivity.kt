@@ -57,16 +57,16 @@ class MainActivity : AppCompatActivity() {
         searchSuperheroesByName("a")
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_activity, menu)
 
-        val menuItem = menu?.findItem(R.id.action_search)
+        val menuItem = menu.findItem(R.id.action_search)
         val searchView = menuItem?.actionView as SearchView
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 searchSuperheroesByName(query)
-                return false
+                return true
             }
 
             override fun onQueryTextChange(query: String): Boolean {
