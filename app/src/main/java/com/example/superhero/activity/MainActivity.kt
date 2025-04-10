@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.activity_main_menu, menu)
 
         val menuItem = menu.findItem(R.id.menu_search)
-        val searchView = menuItem?.actionView as SearchView
+        val searchView = menuItem.actionView as SearchView
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
@@ -87,12 +87,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun searchSuperheroesByName(query: String) {
+
+        //llamada a un hilo secundario
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val service = getRetrofit()
-                val result = service.findSuperheroesByName(query)
+                val response = service.findSuperheroesByName(query)
+                superheroList = response.results
 
-                superheroList = result.results
                 //volvemos al hilo principal
                 CoroutineScope(Dispatchers.Main).launch {
                     adapter.items = superheroList
