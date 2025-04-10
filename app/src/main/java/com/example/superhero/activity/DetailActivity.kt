@@ -1,6 +1,8 @@
 package com.example.superhero.activity
 
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.superhero.R
 import com.example.superhero.data.Superhero
 import com.example.superhero.data.SuperheroService
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,9 +19,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class DetailActivity : AppCompatActivity() {
-    companion object
-    const val Superhero
+    companion object{
+        const val SUPERHERO_ID = "SUPERHERO_ID"
+    }
 
+    lateinit var nameTextView: TextView
+    lateinit var avatarImageView: ImageView
     lateinit var superhero: Superhero
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,17 +38,12 @@ class DetailActivity : AppCompatActivity() {
         }
 
         val id = intent.getStringExtra("SUPERHERO_ID")!!
-        getSuperheroById(id)
+
 
         nameTextView = findViewById(R.id.nameTextView)
         avatarImageView = findViewById(R.id.avatarImageView)
 
         getSuperheroById(id)
-    }
-
-    fun loadData() {
-        Toast.makeText(this, superhero.name, Toast.LENGTH_LONG).show()
-        // Tenemos que rellenar la información del superheroe en pantalla
     }
 
     fun getRetrofit(): SuperheroService {
@@ -62,15 +63,19 @@ class DetailActivity : AppCompatActivity() {
                 val service = getRetrofit()
                 superhero = service.findSuperheroById(id)
 
+                //volvemos al hilo principal
                 CoroutineScope(Dispatchers.Main).launch {
-                    loadData()
+                    LoadData()
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
     }
-    private fun  loadData(){
-        nameText.text
+
+    fun LoadData() {
+        nameTextView.text = superhero.name
+      Picasso.get().load(superhero.image.url).into(avatarImageView)
+        Toast.makeText(this, superhero.name, Toast.LENGTH_LONG).show()
     }
 }
