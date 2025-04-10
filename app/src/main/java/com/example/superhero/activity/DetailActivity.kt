@@ -16,6 +16,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class DetailActivity : AppCompatActivity() {
+    companion object
+    const val Superhero
 
     lateinit var superhero: Superhero
 
@@ -30,6 +32,11 @@ class DetailActivity : AppCompatActivity() {
         }
 
         val id = intent.getStringExtra("SUPERHERO_ID")!!
+        getSuperheroById(id)
+
+        nameTextView = findViewById(R.id.nameTextView)
+        avatarImageView = findViewById(R.id.avatarImageView)
+
         getSuperheroById(id)
     }
 
@@ -48,6 +55,8 @@ class DetailActivity : AppCompatActivity() {
     }
 
     fun getSuperheroById(id: String) {
+
+        //llamada en  el hilo secundario
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val service = getRetrofit()
@@ -60,5 +69,8 @@ class DetailActivity : AppCompatActivity() {
                 e.printStackTrace()
             }
         }
+    }
+    private fun  loadData(){
+        nameText.text
     }
 }
