@@ -1,6 +1,7 @@
 package com.example.superhero.activity
 
 import android.content.Intent
+import android.os.Binder
 import android.os.Bundle
 import android.view.Menu
 import androidx.activity.enableEdgeToEdge
@@ -14,6 +15,7 @@ import com.example.superhero.R
 import com.example.superhero.adapters.SuperheroAdapter
 import com.example.superhero.data.Superhero
 import com.example.superhero.data.SuperheroService
+import com.example.superhero.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,7 +25,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var recyclerView: RecyclerView
+    lateinit var binder: ActivityMainBinding
+
+   // lateinit var recyclerView: RecyclerView
     lateinit var adapter: SuperheroAdapter
 
 
@@ -33,7 +37,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -51,8 +57,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = GridLayoutManager(this, 2)
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager = GridLayoutManager(this, 2)
 
         searchSuperheroesByName("a")
     }
