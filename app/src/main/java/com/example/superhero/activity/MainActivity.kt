@@ -25,20 +25,22 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binder: ActivityMainBinding
 
-   // lateinit var recyclerView: RecyclerView
+    lateinit var binding: ActivityMainBinding
+    //lateinit var superhero: SuperheroAdapter
     lateinit var adapter: SuperheroAdapter
 
+    var superheroList: List<Superhero> = emptyList()
 
-    var superheroList: List<Superhero> = listOf()
+   // lateinit var recyclerView: RecyclerView
+   //lateinit var adapter: SuperheroAdapter
+   // var superheroList: List<Superhero> = listOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
         binding = ActivityMainBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -47,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        recyclerView = findViewById(R.id.recyclerView)
+        //recyclerView = findViewById(R.id.recyclerView)
 
         adapter = SuperheroAdapter(superheroList) { position ->
             val superhero = superheroList[position]
@@ -83,28 +85,30 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    fun getRetrofit(): SuperheroService {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://www.superheroapi.com/api.php/7252591128153666/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        return retrofit.create(SuperheroService::class.java)
-    }
+//    fun getRetrofit(): SuperheroService {
+//        val retrofit = Retrofit.Builder()
+//            .baseUrl("https://www.superheroapi.com/api.php/7252591128153666/")
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//
+//        return retrofit.create(SuperheroService::class.java)
+//    }
 
     fun searchSuperheroesByName(query: String) {
 
         //llamada a un hilo secundario
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val service = getRetrofit()
+//                val service = getRetrofit()
+                val service = SuperheroService.getInstance()
                 val response = service.findSuperheroesByName(query)
                 superheroList = response.results
 
                 //volvemos al hilo principal
                 CoroutineScope(Dispatchers.Main).launch {
-                    adapter.items = superheroList
-                    adapter.notifyDataSetChanged()
+//                    adapter.items = superheroList
+//                    adapter.notifyDataSetChanged()
+                    adapter.updateItems(superheroList)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
