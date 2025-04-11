@@ -1,6 +1,7 @@
 package com.example.superhero.activity
 
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -44,6 +45,20 @@ class DetailActivity : AppCompatActivity() {
         avatarImageView = findViewById(R.id.avatarImageView)
 
         getSuperheroById(id)
+
+        binding.navigationView.setOnItemSelectedListener {
+            bindin.contenBiography.visibility = View.GONE
+            bindin.contenApareance.visibility = View.GONE
+            bindin.contenStats.visibility = View.GONE
+
+            when (menuItem.itemId){
+                R.id.menu_biography -> binding.contentBiography.visibility = View.VISIBLE
+                R.id.menu_appareance -> binding.contentAppareance.visibility = View.VISIBLE
+                R.id.menu_stats -> binding.contentStat.visibility = View.VISIBLE
+            }
+        }
+
+
     }
 
     fun getRetrofit(): SuperheroService {
@@ -77,5 +92,9 @@ class DetailActivity : AppCompatActivity() {
         nameTextView.text = superhero.name
       Picasso.get().load(superhero.image.url).into(avatarImageView)
         Toast.makeText(this, superhero.name, Toast.LENGTH_LONG).show()
+
+        //biograhy
+        binding.intelligenceTexteView.text = "${superhero.stats.intellgence}
+        binding.intelligenceProgress.progress = superhero.stats.intelligence.toIn
     }
 }
