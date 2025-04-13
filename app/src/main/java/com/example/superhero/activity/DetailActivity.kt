@@ -11,17 +11,17 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.superhero.R
 import com.example.superhero.data.Superhero
-import com.example.superhero.data.SuperheroService
+import com.example.superhero.utils.SuperheroService
 import com.example.superhero.databinding.ActivityDetailBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+
 
 class DetailActivity : AppCompatActivity() {
-    companion object{
+
+    companion object {
         const val SUPERHERO_ID = "SUPERHERO_ID"
     }
 //    lateinit var nameTextView: TextView
@@ -49,15 +49,15 @@ class DetailActivity : AppCompatActivity() {
 
         getSuperheroById(id)
 
-        binding.navigationView.setOnItemSelectedListener {menuItem ->
+        binding.navigationView.setOnItemSelectedListener { menuItem ->
             binding.contentBiography.visibility = View.GONE
-            binding.contentApareance.visibility = View.GONE
+            binding.contentAppearance.visibility = View.GONE
             binding.contentStats.visibility = View.GONE
 
-            when (menuItem.itemId){
+            when (menuItem.itemId) {
                 R.id.menu_biography -> binding.contentBiography.visibility = View.VISIBLE
-                R.id.menu_appareance -> binding.contentAppareance.visibility = View.VISIBLE
-                R.id.menu_stats -> binding.contentStat.visibility = View.VISIBLE
+                R.id.menu_appearance -> binding.contentAppearance.visibility = View.VISIBLE
+                R.id.menu_stats -> binding.contentStats.visibility = View.VISIBL
             }
             true
         }
@@ -82,12 +82,12 @@ class DetailActivity : AppCompatActivity() {
         //llamada en  el hilo secundario
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val service = getRetrofit()
+                val service = SuperheroService.getInstance()
                 superhero = service.findSuperheroById(id)
 
                 //volvemos al hilo principal
                 CoroutineScope(Dispatchers.Main).launch {
-                    LoadData()
+                    loadData()
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -95,24 +95,23 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun LoadData() {
+    private fun loadData() {
 
 //        nameTextView.text = superhero.name
         supportActionBar?.title = superhero.name
-        supportActionBar?.subtitle = superhero. biography.realName
+        supportActionBar?.subtitle = superhero.biography.realName
         Picasso.get().load(superhero.image.url).into(binding.avatarImageView)
         Toast.makeText(this, superhero.name, Toast.LENGTH_LONG).show()
 
 
         //biograhy
-        binding.plublisherTextView.text = superhero.biography.publisher
-        binding.placedOfBirthTextView.text = superhero.biography.placeOfBirth
-        binding.alignmentTextView.TextView.text = superhero.biography.alignmente
+        binding.publisherTextView.text = superhero.biography.publisher
+        binding.placeOfBirthTextView.text = superhero.biography.placeOfBirth
+        binding.alignmentTextView.text = superhero.biography.alignment
 
         //Stat
-        binding.intelligenceTexteView.text = "${superhero.stats.intellgence.toIntOrNull() ?:0}"
-        binding.intelligenceProgress.progress = superhero.stats.intelligence.toInOrNull() ?:0
-
+        binding.intelligenceTextView.text = "${superhero.stats.intelligence.toIntOrNull() ?: 0}"
+        binding.intelligenceProgress.progress = superhero.stats.intelligence.toIntOrNull() ?: 0
 
     }
 }

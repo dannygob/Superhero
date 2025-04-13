@@ -7,7 +7,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-
 interface SuperheroService {
     @GET("search/{name}")
     suspend fun findSuperheroesByName(@Path("name") query: String): SuperheroResponse
