@@ -17,13 +17,13 @@ data class Superhero (
     @SerializedName("powerstats") val stats : Stats
 )
 
-    data class  Biography(
-        @SerializedName("full-name") val realName : String,
-        @SerializedName("place-of-birth") val placeOfBirth : String,
-        val publisher: String,
-        val alignment: String
-
+data class  Biography(
+    @SerializedName("full-name") val realName : String,
+    @SerializedName("place-of-birth") val placeOfBirth : String,
+    val publisher: String,
+    val alignment: String
     )
+
 data class Stats (
     var intelligence: String,
     var strength: String,

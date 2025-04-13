@@ -16,20 +16,19 @@
             android:id="@+id/avatarImageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:src="@mipmap/ic_launcher"
             android:scaleType="centerCrop"/>
 
         <TextView
             android:id="@+id/nameTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             tools:text="Superhero name"
-            android:textColor="@color/white"
-            android:background="@color/text_background"
-            android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"
-            android:layout_gravity="bottom"/>
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+            android:background="#C0818181"
+            android:textColor="@color/white"/>
 
     </androidx.cardview.widget.CardView>
 
