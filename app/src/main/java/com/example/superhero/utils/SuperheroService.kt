@@ -1,8 +1,9 @@
-package com.example.superhero.data
+package com.example.superhero.utils
 
+import com.example.superhero.data.Superhero
+import com.example.superhero.data.SuperheroResponse
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -16,7 +17,7 @@ interface SuperheroService {
     companion object{
 
         fun getInstance(): SuperheroService {
-            val retrofit= Retrofit.Builder()
+            val retrofit = Retrofit.Builder()
              .baseUrl("https://superheroapi.com/api/7252591128153666/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()

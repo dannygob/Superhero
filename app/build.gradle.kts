@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.superhero"
-        minSdk = 24
+        minSdk = 26
 
         targetSdk = 35
         versionCode = 1
@@ -42,7 +42,8 @@ android {
 dependencies {
 
     // Retrofit & GsonConverterFactory
-    implementation (libs.retrofit)
+
+    implementation(libs.retrofit)
     implementation(libs.converter.gson)
 
 
