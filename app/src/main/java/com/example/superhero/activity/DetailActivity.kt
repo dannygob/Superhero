@@ -57,7 +57,7 @@ class DetailActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.menu_biography -> binding.contentBiography.visibility = View.VISIBLE
                 R.id.menu_appearance -> binding.contentAppearance.visibility = View.VISIBLE
-                R.id.menu_stats -> binding.contentStats.visibility = View.VISIBL
+                R.id.menu_stats -> binding.contentStats.visibility = View.VISIBLE
             }
             true
         }
@@ -114,4 +114,8 @@ class DetailActivity : AppCompatActivity() {
         binding.intelligenceProgress.progress = superhero.stats.intelligence.toIntOrNull() ?: 0
 
     }
+}
+
+
+
 }
