@@ -61,7 +61,7 @@ dependencies {
     implementation (libs.glide)
     annotationProcessor (libs.compiler)
     implementation (libs.androidx.core.splashscreen)
-    implementation ("com.google.android.material:material:1.11.0")
+    implementation (libs.material.v1110)
 
 
 
