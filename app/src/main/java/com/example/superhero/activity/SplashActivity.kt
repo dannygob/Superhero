@@ -38,7 +38,7 @@ class SplashActivity : AppCompatActivity() {
             // Cargar el primer GIF
             Glide.with(this@SplashActivity)
                 .asGif()
-                .load(R.drawable.clipeditado) // tu primer GIF
+                .load(R.drawable.clip) // tu primer GIF
                 .into(gifImageView)
             delay(1000) // Espera
 
