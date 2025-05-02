@@ -11,4 +11,7 @@
     <color name="teal_700">#FF018786</color>
 
     <color name="menu_item_color">#FD0029</color>
+    <color name="splash_background">#9B0F0F</color>
+
+
 </resources>
