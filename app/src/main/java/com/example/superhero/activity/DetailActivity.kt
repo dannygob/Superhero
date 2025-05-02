@@ -13,6 +13,7 @@ import com.example.superhero.R
 import com.example.superhero.data.Superhero
 import com.example.superhero.utils.SuperheroService
 import com.example.superhero.databinding.ActivityDetailBinding
+import com.example.superheroleague.utils.SuperheroService
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

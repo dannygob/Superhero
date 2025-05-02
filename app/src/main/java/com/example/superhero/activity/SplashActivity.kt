@@ -4,8 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen // Cambio correcto de importación
 import com.bumptech.glide.Glide
 import com.example.superhero.R
+import com.example.superheroleague.activities.MainActivity
 import kotlinx.coroutines.*
 
 class SplashActivity : AppCompatActivity() {
@@ -15,55 +17,50 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Vinculamos con el layout que contiene el ImageView del GIF
+        // Instalar el splash screen en Android 12+
+        SplashScreen.installSplashScreen()
+
+        // Vincular con el layout del splash
         setContentView(R.layout.activity_splash)
 
-        // Referencia al ImageView donde cargaremos los GIFs
+        // Referencia al ImageView del GIF
         val gifImageView = findViewById<ImageView>(R.id.gifImageView)
 
-        // Inicia la secuencia de mostrar los GIFs
-        showGIFsConsecutivos(gifImageView)
-
-        // Simula la carga de la app y luego pasa a MainActivity
+        // Cargar GIFs y avanzar a MainActivity
         splashScope.launch {
-            delay(8000)  // Espera hasta que los GIFs se hayan mostrado
+            showGIFsConsecutivos(gifImageView)
+            delay(2000) // Pequeña espera extra para estabilidad
             startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-            finish()
+            finish() // Cierra el splash correctamente
         }
     }
 
-    // Función para mostrar tres GIFs consecutivos
-    private fun showGIFsConsecutivos(gifImageView: ImageView) {
-        splashScope.launch {
-            // Cargar el primer GIF
-            Glide.with(this@SplashActivity)
-                .asGif()
-                .load(R.drawable.clip) // tu primer GIF
-                .into(gifImageView)
-            delay(1000) // Espera
+    // Función para mostrar los GIFs con Glide
+    private suspend fun showGIFsConsecutivos(gifImageView: ImageView) {
+        Glide.with(this@SplashActivity)
+            .asGif()
+            .load(R.drawable.clip) // GIF inicial
+            .into(gifImageView)
+        delay(1500) // Espera antes de la transición
 
-            //            // Cargar el segundo GIF
-//            Glide.with(this@SplashActivity)
-//                .asGif()
-//                .load(R.drawable.dc1) // tu segundo GIF
-//                .into(gifImageView)
-//            delay(1) // Espera
+//        // Cargar GIFs opcionales (si los usas)
+//        Glide.with(this@SplashActivity)
+//            .asGif()
+//            .load(R.drawable.dc1)
+//            .into(gifImageView)
+//        delay(1500)
 //
-//            // Cargar el tercer GIF
-//            Glide.with(this@SplashActivity)
-//                .asGif()
-//                .load(R.drawable.dc2) // tu tercer GIF
-//                .into(gifImageView)
-//            delay(1) // Espera
-//        }
-            fun onDestroy() {
-                splashScope.cancel() // Cancelar cualquier tarea pendiente
-                super.onDestroy()
-            }
-        }
+//        Glide.with(this@SplashActivity)
+//            .asGif()
+//            .load(R.drawable.dc2)
+//            .into(gifImageView)
+//        delay(1500)
+    }
 
+    override fun onDestroy() {
+        splashScope.cancel() // Cancelar tareas pendientes
+        super.onDestroy()
     }
 }
-
 
 
