@@ -28,11 +28,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_14
+        targetCompatibility = JavaVersion.VERSION_14
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "14"
     }
     buildFeatures{
         viewBinding = true
@@ -42,6 +42,7 @@ android {
 dependencies {
 
     // Retrofit & GsonConverterFactory
+
 
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
@@ -61,7 +62,5 @@ dependencies {
     implementation (libs.glide)
     annotationProcessor (libs.compiler)
     implementation (libs.androidx.core.splashscreen)
-    implementation (libs.androidx.core.splashscreen.v100)
-
 
 }

@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
+    <!-- Publisher -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,19 +17,18 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Publisher:"
-            android:paddingStart="15dp" />
+            />
 
         <TextView
             android:id="@+id/publisherTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
             android:layout_weight="3"
             android:textStyle="bold"
-            tools:text="DC Comics" />
-
+            tools:text="DC Comics"/>
     </LinearLayout>
 
+    <!-- Place of Birth -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,19 +39,18 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Place of birth:"
-            android:paddingStart="15dp" />
+            />
 
         <TextView
             android:id="@+id/placeOfBirthTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
             android:layout_weight="3"
             android:textStyle="bold"
-            tools:text="Kripton" />
-
+            tools:text="Krypton"/>
     </LinearLayout>
 
+    <!-- Alignment -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,20 +61,19 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Alignment:"
-            android:paddingStart="15dp" />
+            />
 
         <TextView
             android:id="@+id/alignmentTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
             android:layout_weight="3"
             android:textStyle="bold"
-            tools:text="Good"
-            android:textAllCaps="true"/>
-
+            android:textAllCaps="true"
+            tools:text="GOOD"/>
     </LinearLayout>
 
+    <!-- Occupation -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -85,19 +84,18 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Occupation:"
-            android:paddingStart="15dp" />
+            />
 
         <TextView
             android:id="@+id/occupationTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
             android:layout_weight="3"
             android:textStyle="bold"
-            tools:text="Journalist" />
-
+            tools:text="Journalist"/>
     </LinearLayout>
 
+    <!-- Base -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -108,17 +106,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Base:"
-            android:paddingStart="15dp" />
+            />
 
         <TextView
             android:id="@+id/baseTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
             android:layout_weight="3"
             android:textStyle="bold"
-            tools:text="Daily Planet" />
-
+            tools:text="Daily Planet"/>
     </LinearLayout>
 
 </LinearLayout>
