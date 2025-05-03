@@ -15,7 +15,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Intelligence:"/>
+            android:text="Intelligence:"
+            android:paddingStart="20dp"/>
 
         <TextView
             android:id="@+id/intelligenceTextView"
@@ -36,16 +37,21 @@
     </LinearLayout>
 
     <!-- Strength -->
+
+    <!-- Speed -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_weight="1"
-            android:text="Strength:"/>
+            android:paddingStart="20dp"
+            android:text="Strength:" />
 
         <TextView
             android:id="@+id/strengthTextView"
@@ -59,13 +65,12 @@
             android:id="@+id/strengthProgress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_weight="2"
-            android:progress="30"
-            android:layout_gravity="center_vertical"/>
+            android:progress="30" />
 
     </LinearLayout>
 
-    <!-- Speed -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -75,7 +80,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Speed:"/>
+            android:text="Speed:"
+            android:paddingStart="20dp"/>
 
         <TextView
             android:id="@+id/speedTextView"
@@ -105,7 +111,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Durability:"/>
+            android:text="Durability:"
+            android:paddingStart="20dp"/>
 
         <TextView
             android:id="@+id/durabilityTextView"
@@ -135,7 +142,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Power:"/>
+            android:text="Power:"
+            android:paddingStart="20dp"/>
 
         <TextView
             android:id="@+id/powerTextView"
@@ -165,7 +173,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Combat:"/>
+            android:text="Combat:"
+            android:paddingStart="20dp"/>
 
         <TextView
             android:id="@+id/combatTextView"

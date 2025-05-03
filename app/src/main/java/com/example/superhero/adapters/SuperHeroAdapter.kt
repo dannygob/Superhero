@@ -1,4 +1,4 @@
-package com.example.superheroleague.adapters
+package com.example.superhero.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.superhero.databinding.ItemSuperheroBinding
-import com.example.superheroleague.R
-import com.example.superheroleague.data.Superhero
-import com.example.superheroleague.databinding.ItemSuperheroBinding
+import com.example.superhero.R
+import com.example.superhero.data.Superhero
 import com.squareup.picasso.Picasso
 
 class SuperheroAdapter(

@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen // Cambio correcto de importación
 import com.bumptech.glide.Glide
 import com.example.superhero.R
-import com.example.superheroleague.activities.MainActivity
+import com.example.superhero.activities.MainActivity
 import kotlinx.coroutines.*
 
 class SplashActivity : AppCompatActivity() {
@@ -62,5 +62,8 @@ class SplashActivity : AppCompatActivity() {
         super.onDestroy()
     }
 }
+
+
+
 
 

@@ -1,7 +1,8 @@
-package com.example.superheroleague.activities
+package com.example.superhero.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -10,12 +11,13 @@ import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.superhero.R
 import com.example.superhero.activity.DetailActivity
 import com.example.superhero.databinding.ActivityMainBinding
-import com.example.superheroleague.adapters.SuperheroAdapter
-import com.example.superheroleague.data.Superhero
-import com.example.superheroleague.utils.SuperheroService
+import com.example.superhero.adapters.SuperheroAdapter
+import com.example.superhero.data.Superhero
+import com.example.superhero.utils.SuperheroService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

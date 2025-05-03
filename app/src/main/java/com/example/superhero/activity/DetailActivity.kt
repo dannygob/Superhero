@@ -1,4 +1,4 @@
-package com.example.superhero.activity
+package com.example.superhero.activities
 
 import android.os.Bundle
 import android.view.View
@@ -13,7 +13,6 @@ import com.example.superhero.R
 import com.example.superhero.data.Superhero
 import com.example.superhero.utils.SuperheroService
 import com.example.superhero.databinding.ActivityDetailBinding
-import com.example.superheroleague.utils.SuperheroService
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -43,12 +42,12 @@ class DetailActivity : AppCompatActivity() {
             insets
         }
 
-        val id = intent.getStringExtra("SUPERHERO_ID")!!
-
-//        nameTextView = findViewById(R.id.nameTextView)
-//        avatarImageView = findViewById(R.id.avatarImageView)
+        val id = intent.getStringExtra(SUPERHERO_ID)!!
 
         getSuperheroById(id)
+
+        //        nameTextView = findViewById(R.id.nameTextView)
+        //        avatarImageView = findViewById(R.id.avatarImageView)
 
         binding.navigationView.setOnItemSelectedListener { menuItem ->
             binding.contentBiography.visibility = View.GONE

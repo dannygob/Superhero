@@ -1,7 +1,7 @@
-package com.example.superheroleague.data
+package com.example.superhero.data
 
 import androidx.annotation.ColorRes
-import com.example.superheroleague.R
+import com.example.superhero.R
 import com.google.gson.TypeAdapter
 import com.google.gson.annotations.JsonAdapter
 import com.google.gson.annotations.SerializedName
@@ -20,29 +20,38 @@ data class Superhero(
     val work: Work,
     val appearance: Appearance,
     @SerializedName("powerstats") val stats: Stats
-) {
+)
 
     @ColorRes
     fun getAlignmentColor() : Int {
-        return when (biography.alignment) {
+        return when (Biography.alignment) {
             "good" -> R.color.alignment_color_good
             "bad" -> R.color.alignment_color_bad
             else -> R.color.alignment_color_neutral
-        }
+
+                }
     }
-}
-
-data class Work(
-    val occupation: String,
-    val base: String
-)
-
 data class Biography(
     @SerializedName("full-name") val realName: String,
     @SerializedName("place-of-birth") val placeOfBirth: String,
     val publisher: String,
     val alignment: String
 )
+data class Stats(
+    @JsonAdapter(IntegerAdapter::class) var intelligence: Int,
+    @JsonAdapter(IntegerAdapter::class) var strength: Int,
+    @JsonAdapter(IntegerAdapter::class) var speed: Int,
+    @JsonAdapter(IntegerAdapter::class) var durability: Int,
+    @JsonAdapter(IntegerAdapter::class) var power: Int,
+    @JsonAdapter(IntegerAdapter::class) var combat: Int
+)
+
+data class Work(
+    val occupation: String,
+    val base: String
+)
+
+
 
 data class Appearance (
     val race: String,
@@ -51,15 +60,6 @@ data class Appearance (
     @SerializedName("hair-color") val hairColor: String,
     val height: List<String>,
     val weight: List<String>,
-)
-
-data class Stats(
-    @JsonAdapter(IntegerAdapter::class) var intelligence: Int,
-    @JsonAdapter(IntegerAdapter::class) var strength: Int,
-    @JsonAdapter(IntegerAdapter::class) var speed: Int,
-    @JsonAdapter(IntegerAdapter::class) var durability: Int,
-    @JsonAdapter(IntegerAdapter::class) var power: Int,
-    @JsonAdapter(IntegerAdapter::class) var combat: Int
 )
 
 data class Image(

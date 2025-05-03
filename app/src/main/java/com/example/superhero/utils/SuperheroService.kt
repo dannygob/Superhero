@@ -1,7 +1,7 @@
-package com.example.superheroleague.utils
+package com.example.superhero.utils
 
-import com.example.superheroleague.data.Superhero
-import com.example.superheroleague.data.SuperheroSearchResponse
+import com.example.superhero.data.Superhero
+import com.example.superhero.data.SuperheroSearchResponse
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
