@@ -1,17 +1,13 @@
 package com.example.superhero.data
 
+import com.google.gson.annotations.SerializedName
 import androidx.annotation.ColorRes
 import com.example.superhero.R
-import com.google.gson.TypeAdapter
-import com.google.gson.annotations.JsonAdapter
-import com.google.gson.annotations.SerializedName
-import com.google.gson.stream.JsonReader
-import com.google.gson.stream.JsonWriter
+
 
 data class SuperheroSearchResponse(
     val results: List<Superhero>
 )
-
 data class Superhero(
     val id: String,
     val name: String,
@@ -21,15 +17,13 @@ data class Superhero(
     val appearance: Appearance,
     @SerializedName("powerstats") val stats: Stats
 )
-
     @ColorRes
     fun getAlignmentColor() : Int {
         return when (Biography.alignment) {
             "good" -> R.color.alignment_color_good
             "bad" -> R.color.alignment_color_bad
             else -> R.color.alignment_color_neutral
-
-                }
+        }
     }
 data class Biography(
     @SerializedName("full-name") val realName: String,
@@ -38,20 +32,18 @@ data class Biography(
     val alignment: String
 )
 data class Stats(
-    @JsonAdapter(IntegerAdapter::class) var intelligence: Int,
-    @JsonAdapter(IntegerAdapter::class) var strength: Int,
-    @JsonAdapter(IntegerAdapter::class) var speed: Int,
-    @JsonAdapter(IntegerAdapter::class) var durability: Int,
-    @JsonAdapter(IntegerAdapter::class) var power: Int,
-    @JsonAdapter(IntegerAdapter::class) var combat: Int
+    var intelligence: Int,
+    var strength: Int,
+    var speed: Int,
+    var durability: Int,
+    var power: Int,
+    var combat: Int
 )
 
 data class Work(
     val occupation: String,
     val base: String
 )
-
-
 
 data class Appearance (
     val race: String,
@@ -65,18 +57,3 @@ data class Appearance (
 data class Image(
     val url: String
 )
-
-class IntegerAdapter : TypeAdapter<Int>() {
-    override fun write(out: JsonWriter?, value: Int) {
-        out?.value(value)
-    }
-
-    override fun read(`in`: JsonReader?): Int {
-        return try {
-            `in`!!.nextString()!!.toInt()
-        } catch (e: Exception) {
-            0
-        }
-    }
-
-}

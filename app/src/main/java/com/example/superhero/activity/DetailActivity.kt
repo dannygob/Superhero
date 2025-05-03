@@ -17,6 +17,8 @@ import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlin.text.toIntOrNull
+
 
 
 class DetailActivity : AppCompatActivity() {
@@ -26,7 +28,8 @@ class DetailActivity : AppCompatActivity() {
     }
 //    lateinit var nameTextView: TextView
 //    lateinit var avatarImageView: ImageView
-    lateinit var  binding : ActivityDetailBinding
+    lateinit var binding: ActivityDetailBinding
+
     lateinit var superhero: Superhero
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,12 +37,21 @@ class DetailActivity : AppCompatActivity() {
         enableEdgeToEdge()
 
         binding = ActivityDetailBinding.inflate(layoutInflater)
+        val contentBiography = findViewById<View>(R.id.contentBiography)
+        val publisherTextView = findViewById<TextView>(R.id.publisherTextView)
+        val placeOfBirthTextView = findViewById<TextView>(R.id.placeOfBirthTextView)
+        val alignmentTextView = findViewById<TextView>(R.id.alignmentTextView)
+        val contentAppearance = findViewById<View>(R.id.contentAppearance)
+        val contentStats = findViewById<View>(R.id.contentStats)
+
+
         setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+
         }
 
         val id = intent.getStringExtra(SUPERHERO_ID)!!
@@ -50,9 +62,11 @@ class DetailActivity : AppCompatActivity() {
         //        avatarImageView = findViewById(R.id.avatarImageView)
 
         binding.navigationView.setOnItemSelectedListener { menuItem ->
-            binding.contentBiography.visibility = View.GONE
-            binding.contentAppearance.visibility = View.GONE
-            binding.contentStats.visibility = View.GONE
+            // Ocultar todos los fragmentos antes de mostrar el seleccionado
+            contentBiography.visibility = View.GONE
+            contentAppearance.visibility = View.GONE
+            contentStats.visibility = View.GONE
+
 
             when (menuItem.itemId) {
                 R.id.menu_biography -> binding.contentBiography.visibility = View.VISIBLE
@@ -61,6 +75,7 @@ class DetailActivity : AppCompatActivity() {
             }
             true
         }
+
 
         binding.navigationView.selectedItemId = R.id.menu_biography
     }
@@ -97,6 +112,7 @@ class DetailActivity : AppCompatActivity() {
 
     private fun loadData() {
 
+
 //        nameTextView.text = superhero.name
         supportActionBar?.title = superhero.name
         supportActionBar?.subtitle = superhero.biography.realName
@@ -105,6 +121,7 @@ class DetailActivity : AppCompatActivity() {
 
 
         //biograhy
+
         binding.publisherTextView.text = superhero.biography.publisher
         binding.placeOfBirthTextView.text = superhero.biography.placeOfBirth
         binding.alignmentTextView.text = superhero.biography.alignment

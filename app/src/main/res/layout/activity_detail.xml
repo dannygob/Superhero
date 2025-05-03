@@ -43,20 +43,23 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="226dp"
                 android:padding="8dp">
 
                 <include
                     android:id="@+id/contentBiography"
-                    layout="@layout/detail_content_biography"/>
+                    layout="@layout/detail_content_biography"
+                    android:visibility="gone" />
 
                 <include
                     android:id="@+id/contentAppearance"
-                    layout="@layout/detail_content_appearance"/>
+                    layout="@layout/detail_content_appearance"
+                    android:visibility="gone" />
 
                 <include
                     android:id="@+id/contentStats"
-                    layout="@layout/detail_content_powerstats"/>
+                    layout="@layout/detail_content_powerstats"
+                    android:visibility="gone" />
 
             </FrameLayout>
 
